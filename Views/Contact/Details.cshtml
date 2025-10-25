@@ -1,0 +1,46 @@
+﻿@model mvc_project.Models.Contact;
+
+@{
+    ViewData["Title"] = "Contact details";
+}
+
+<body>
+<header>
+    <h1>Contact details</h1>
+    <nav></nav>
+</header>
+<main>
+    <dl class="row"> 
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Name)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Name)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Email)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Email)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Number)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Number)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Active)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Active)
+        </dt>
+    </dl>
+</main>
+<footer>
+    <div class="details_links" style="display:flex; gap: 10px">
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a asp-action="Index">Voltar</a>
+    </div>
+</footer> 
+</body>
