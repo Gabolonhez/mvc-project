@@ -73,15 +73,21 @@ namespace mvc_project.Controllers
             return View(contact);
         }
 
-        [HttpDelete]
+
+        public IActionResult Delete (int id)
+        {
+            var contact = _context.Contacts.Find(id);
+        
+            if (contact == null)
+                return NotFound("Contact not exist");   
+
+            return View(contact);
+        }
+
+        [HttpPost]
         public IActionResult Delete(Contact contact)
         {
             var existingContact = _context.Contacts.Find(contact.Id);
-
-            if (existingContact == null)
-            {
-                return NotFound("Contact not exist");
-            }
 
             _context.Contacts.Remove(existingContact);
             _context.SaveChanges();
