@@ -1,8 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Contact Page";
+﻿@model List<mvc_project.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contact list";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Be welcome to contact page</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Contacts:</h2>
+<p>
+    <a asp-action="Create">New contact</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.Id</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.Number</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Active</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@contact.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@contact.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@contact.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">No contacts found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
