@@ -35,5 +35,59 @@ namespace mvc_project.Controllers
             }
             return View(contact);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var contact = _context.Contacts.Find(id);
+
+            if (contact == null)
+                return NotFound("Contact not exist");
+                
+
+            return View(contact);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Contact contact)
+        {
+            var existingContact = _context.Contacts.Find(contact.Id);
+
+            existingContact.Name = contact.Name;
+            existingContact.Email = contact.Email;
+            existingContact.Number = contact.Number;
+            existingContact.Active = contact.Active;
+
+            _context.Contacts.Update(existingContact);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details (int id) 
+        {
+            var contact = _context.Contacts.Find(id);
+
+            if (contact == null)
+                return NotFound("Contact not exist");
+
+            return View(contact);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(Contact contact)
+        {
+            var existingContact = _context.Contacts.Find(contact.Id);
+
+            if (existingContact == null)
+            {
+                return NotFound("Contact not exist");
+            }
+
+            _context.Contacts.Remove(existingContact);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
