@@ -1,0 +1,49 @@
+﻿@model mvc_project.Models.Contact;
+
+@{ 
+    ViewData["Title"] = "Delete contact";
+}
+
+<body>
+    <header>
+        <h1>Delete contact</h1>
+        <h2 style="color:red" >Are you sure that you want to delete this contact?</h2>
+        <nav></nav>
+    </header>
+    <main>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(x => x.Name)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(x => x.Name)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(x => x.Email)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(x => x.Email)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(x => x.Number)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(x => x.Number)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(x => x.Active)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(x => x.Active)
+            </dt>
+        </dl>
+    </main>
+    <footer>
+        <form asp-action="delete">
+            <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+        </form>
+
+        <br />
+        <a asp-action="Index">Back</a>
+    </footer>
+</body>

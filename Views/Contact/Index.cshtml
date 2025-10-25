@@ -30,7 +30,9 @@
                     <td>@contact.Name</td>
                     <td>@contact.Number</td>
                     <td>@contact.Email</td>
-                    <td>@contact.Active</td>
+                    <td>
+                        <input type="checkbox" @(contact.Active ? "checked" : "") disabled /> 
+                    </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@contact.Id">Edit</a> |
                         <a asp-action="Details" asp-route-id="@contact.Id">Details</a> |
